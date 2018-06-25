@@ -1,0 +1,211 @@
+<html>
+
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="Wed, 30 Apr 1975 02:00:00 GMT">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Modem Configuration: Status - Software</title>
+
+</head>
+
+<body>
+
+<script language="javascript" type="text/javascript">
+function RgConfigHtml()
+{
+   var html = "";
+   var flag = 1;
+   var freqPlan = 0;
+   var channelId = 0;
+   var dsFreq = 0;
+   var dhcpServer = "Enabled";
+   var freqPlanList = ["North American Standard/HRC/IRC", "European PAL I/B/G", "Japan NTSC", 
+                       "China", "Korea" ];
+
+   if (flag == 1)
+   {
+       html += '<tr><td>Frequency Plan</td><td>' + freqPlanList[freqPlan] + '</font></td></tr>';
+		html += '<tr><td>Upstream Channel ID</td><td>' + channelId + '</font></td></tr>';
+		html += '<tr><td>Frequency (Hz)</td><td>' + dsFreq + '</font></td></tr>';
+		html += '<tr><td>DHCP Server</td><td >' + dhcpServer + '</font></td></tr>';
+      
+   }
+   else
+   {
+		
+       html += '<tr><td>Frequency Plan</td>' +
+		   '<td><SELECT NAME="CmFrequencyPlan">' +
+           '<OPTION value="0"' + (freqPlan==0?'selected':'') + '>North American Standard/HRC/IRC' +
+		   '<OPTION value="1"' + (freqPlan==1?'selected':'') + '>European PAL I/B/G' +
+		   '<OPTION value="2"' + (freqPlan==2?'selected':'') + '>Japan NTSC' +
+                   '<OPTION value="4"' + (freqPlan==4?'selected':'') + '>Korea' +
+                   '</SELECT></td></tr>';
+       html += '<tr><td>Upstream Channel ID</td>' +
+		   '<td><INPUT TYPE=TEXT NAME="CmUpChannelId" value=' + channelId + '></td></tr>';
+       html += '<tr><td>Frequency</td>' +
+		   '<td><INPUT TYPE=TEXT NAME="CmDownstreamFreq" value=' + dsFreq + '></td></tr>';
+       html += '<tr><td COLSPAN=2>DHCP Server Enabled                                     '+
+		   '<INPUT TYPE=CHECKBOX NAME="CmDhcpServer"' + (dhcpServer=="Enabled"?'checked':'') + '><br>' +
+	  'The SURFboard cable modem can be used as a gateway to the Internet by a ' +
+          'maximum of 32 users on a Local Area Network (LAN). When the Cable Modem is ' +
+          'disconnected from the Internet, users on the LAN can be dynamically ' +
+          'assigned IP Addresses by the Cable Modem DHCP Server. These addresses are ' +
+          'assigned from an address pool which begins with 192.168.100.11 and ends ' +
+          'with 192.168.100.42. Statically assigned IP addresses for other devices on ' +
+          'the LAN should be chosen from outside of this range.'+ '</td></tr>';
+       html += '<tr><td COLSPAN=2>' +
+		   '<input type="submit" value="Save Changes" align="middle" onClick="SaveChanges();">' + 
+		   '<input type="hidden" name="saveChanges" value=0>' +
+		   '<br>' +
+		   '<b>Note:<br></b>' +
+		   'Making changes requires a modem reboot to take effect.</td></tr>';
+   }
+
+   return html;
+}
+
+function SaveChanges()
+{
+	window.document.RgConfig.saveChanges.value = 1;
+}
+
+function restoreFactoryDefault()
+{
+ var agree=window.confirm('This action requires re-initialization of the cable modem. This process could take from 5 to 30 minutes.  Do you want to proceed?');
+
+ if (agree == true)
+ {
+	window.document.RgConfig.RestoreFactoryDefault.value = 1;
+ }
+}
+
+function resetReq()
+{
+ var agree=window.confirm('Are you sure you want to reset the modem?');
+
+ if (agree == true)
+ {
+	window.document.RgConfig.ResetReq.value = 1;
+ }
+}
+
+</script>
+
+<form action=/goform/RgConfig method=POST name="RgConfig">
+
+<table border="0" cellspacing="0" width="100%" id="AutoNumber1" style="border-collapse: collapse" bordercolor="#111111" cellpadding=0>
+
+<tr>
+ <td width="100%" height="22" colspan="2" bgcolor="#018ABE">&nbsp; 
+ </td>
+</tr>
+
+<tr>
+ <td width="157" height="130" align="center" style="border-left-style: none; border-left-width: medium; border-right-style: solid" bordercolor="#018ABE">
+  <a href="http://www.motorola.com"><img border="0" src="s_motorola.gif"></a>
+ </td>
+ <td width="119%" height="51" align="left" style="border-bottom: 0px solid #C0C0C0">
+    <p style="margin-left: 20; margin-top: 0; margin-bottom: 0"><font face="Arial" style="font-size: 20pt">Configuration</font></p>
+    <p style="margin-left: 20; margin-top: 0; margin-bottom: 0"><b>This page provides information about the manually configurable settings of the Cable Modem.</b></p>
+  </td>
+</tr>
+
+<tr>
+ <td width="140" height="50" align="center" valign="top" style="border-left-style: none; border-left-width: medium; border-right-style: solid" bordercolor="#018ABE">&nbsp;<A HREF="RgStatus.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+
+	<table border="0" cellspacing="6" width="100%" cellpadding="2">
+
+		<tr><td bgcolor="#CCCC99">
+		<A HREF="RgStatus.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT  COLOR="#485A91" FACE="Arial,Helvetica"><b>
+		Status</b></FONT></A></td></tr>
+
+		<tr><td bgcolor="#CCCC99">
+		<A HREF="RgSignal.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT COLOR="#485A91" FACE="Arial,Helvetica"><b>
+		Signal</b></FONT></A></td></tr>
+
+		<tr><td bgcolor="#CCCC99">
+		<A HREF="RgAddress.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT COLOR="#485A91" FACE="Arial,Helvetica"><b>
+		Addresses</b></FONT></A></td></tr>
+
+		<tr><td bgcolor="#666600">
+		<A HREF="RgConfig.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT COLOR="White" FACE="Arial,Helvetica"><b>
+		Configuration</b></FONT></A></td></tr>
+
+		<tr><td bgcolor="#CCCC99">
+		<A HREF="RgEventLog.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT COLOR="#485A91" FACE="Arial,Helvetica"><b>
+		Logs</b></FONT></A></td></tr>
+
+		<tr><td bgcolor="#CCCC99">
+		<A HREF="RgHelp.asp" TARGET="_top" STYLE="TEXT-DECORATION:none">
+		<FONT COLOR="#485A91" FACE="Arial,Helvetica"><b>
+		Help</b></FONT></A></td></tr>
+
+		<br>
+		<br>
+		<br>
+		<tr><td align="center"><a href="http://www.motorola.com">
+			<img border="0" src="about_surfboard.gif"></a></td>
+		</tr>
+	</table>
+ </td>
+
+ <td>
+
+ <table style="font-family: Helvetica; font-size: 14; margin-left: 20; margin-bottom: 30" width="95%" CELLPADDING=6 CELLSPACING=0 BORDER=1>
+
+ <tr>
+  <td align="center" bgcolor="#666600"><b><font COLOR="white" FACE="Arial,Helvetica">Item</font></b></td>
+  <td align="center" bgcolor="#666600"><b><font COLOR="white" FACE="Arial,Helvetica" >Value</font></b>
+  </td>
+ </tr>
+
+
+<script language="javascript" type="text/javascript">
+document.write(RgConfigHtml());
+</script>
+
+
+<tr>
+  <td COLSPAN=2>
+      <input type="submit" value="Restore Factory Defaults" align="middle" onClick="restoreFactoryDefault();">
+	  <input type="hidden" name="RestoreFactoryDefault" value=0>
+       <br>
+		<b>Note:<br></b>
+        Resetting the cable modem to its factory default configuration will remove all
+		stored parameters learned by the cable modem during prior initializations. The
+		process to get back online from a factory default condition could take from 5
+		to 30 minutes. Please reference the cable modem User Guide for details on the
+		power up sequence.
+  </td>
+</tr>
+
+<br>
+
+<tr>
+  <td COLSPAN=2 align="center">
+      <input type="submit" value="Restart Cable Modem" align="center" onClick="resetReq();">
+	  <input type="hidden" name="ResetReq" value=0>
+  </td>
+</tr>
+</table>
+</td>
+</tr>
+
+  <tr><td width="100%" height="19" colspan="2" bgcolor="#018ABE">&nbsp;</td></tr>
+  <tr><td><font size="1">©2004 Motorola &nbsp; All rights reserved.</font></td></tr>
+
+</table>
+</form>
+</body>
+
+</html>
+
+
+
+
+
